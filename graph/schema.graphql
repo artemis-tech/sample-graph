@@ -1,0 +1,27 @@
+scalar Date
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  user(id: ID!): User!
+  users: [User!]
+}
+
+type User {
+  id: ID!
+  name: String!
+  surename: String!
+  createdAt: Date!
+}
+
+input NewUser {
+  name: String!
+  surename: String!
+}
+
+type Mutation {
+  signup(input: NewUser!): ID!
+}
