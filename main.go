@@ -15,6 +15,9 @@ func main() {
 		port = os.Getenv("PORT")
 	}
 
+	// initializes graph package global Users variable with 0 entries and capacity of 30
+	graph.Users = make([]*graph.User, 0, 30)
+
 	http.Handle("/graphql/playground", handler.Playground("GraphQL playground", "/query"))
 	http.Handle("/query", handler.GraphQL(graph.NewExecutableSchema(
 		graph.Config{Resolvers: &graph.Resolver{}}),
